@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#10281e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Życie Biznesmena">
+<title>Życie Biznesmena</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--bg:#f3f6f3;--card:#fff;--ink:#17271d;--muted:#66756b;--green:#173d2b;--green2:#dcefe0;--line:#dce5dd;--red:#b83b35;--gold:#b88416}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:calc(24px + env(safe-area-inset-bottom))}button,textarea{font:inherit}button{border:0;border-radius:14px;padding:13px 14px;background:var(--green);color:#fff;font-weight:650;cursor:pointer;min-height:46px}button:disabled{opacity:.4;cursor:not-allowed}.secondary{background:#edf2ee;color:var(--green);border:1px solid var(--line)}.danger{background:#fff0ef;color:var(--red);border:1px solid #f0d1cf}.header{background:var(--green);color:white;padding:calc(16px + env(safe-area-inset-top)) 18px 18px;border-radius:0 0 24px 24px}.brand{display:flex;align-items:center;gap:12px}.logo{font-size:30px;background:#2d5940;border-radius:14px;width:54px;height:54px;display:grid;place-items:center}.brand h1{font-size:19px;margin:0 0 4px}.sub{font-size:12px;color:#c5d8ca}.day{margin-left:auto;background:#315b42;padding:8px 10px;border-radius:10px;font-size:12px;font-weight:700;white-space:nowrap}.balance-label{margin-top:22px;color:#c5d8ca;font-size:12px;letter-spacing:.08em}.balance{font-size:34px;font-weight:800;margin:4px 0 12px;letter-spacing:-.04em}.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.stat{background:#254a35;padding:12px;border-radius:14px}.stat span{display:block;color:#c5d8ca;font-size:12px;margin-bottom:5px}.stat strong{font-size:18px}.wrap{max-width:760px;margin:auto;padding:14px}.nav{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:2px 0 16px}.nav button{padding:10px 3px;min-height:54px;background:#e7ede8;color:#45604d;font-size:12px}.nav button.active{background:var(--green2);color:var(--green);outline:1px solid #b6d7bd}.panel{display:none}.panel.active{display:block}.title{font-size:21px;font-weight:800;margin:8px 0 5px}.muted{color:var(--muted);font-size:13px;line-height:1.45}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;margin:10px 0;box-shadow:0 2px 6px #142a1a05}.itemhead{display:flex;gap:12px;align-items:center}.emoji{width:50px;height:50px;border-radius:14px;background:#edf3ee;display:grid;place-items:center;font-size:27px;flex-shrink:0}.itemhead h3{font-size:16px;margin:0 0 4px}.itemhead p{font-size:13px;color:var(--muted);margin:0;line-height:1.35}.itemfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:13px;padding-top:12px;border-top:1px solid var(--line)}.itemfoot small{display:block;color:var(--muted);font-size:12px;margin-bottom:3px}.money{font-weight:800;color:#267044}.itemfoot button{font-size:13px;padding:11px}.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 0;font-size:14px}.row+.row{border-top:1px solid var(--line)}.pill{display:inline-block;background:#e7f4e8;color:#25643b;border-radius:999px;padding:5px 8px;font-size:11px;font-weight:700}.pill.warn{background:#fff1d6;color:#8a5b00}.notice{background:#eaf2eb;border-radius:14px;padding:13px;font-size:14px;line-height:1.45}.actions{display:grid;gap:9px;margin-top:14px}.progress{height:8px;background:#e6ece7;border-radius:99px;overflow:hidden}.progress div{height:100%;background:#6ba77b}.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;min-height:100px;resize:vertical;font-size:12px}.small{font-size:12px;color:var(--muted);line-height:1.4}.achievement{display:flex;gap:12px;align-items:flex-start}.achievement .emoji{font-size:24px}.footer{text-align:center;color:#829087;font-size:11px;padding:18px 6px}.hidden{display:none!important}.mgrange{width:100%;accent-color:#267044}.mgline{margin:14px 0}.mgline label{display:flex;justify-content:space-between;gap:8px;font-size:14px;margin-bottom:7px}.mgline strong{color:#267044}.mgselect{width:100%;padding:11px;border:1px solid var(--line);border-radius:12px;background:white;font:inherit}
+.summary-overlay{position:fixed;inset:0;background:#07170fdd;z-index:999;display:none;align-items:flex-end;justify-content:center;padding:10px}.summary-overlay.show{display:flex}.summary-sheet{background:var(--bg);border-radius:22px;width:min(100%,650px);max-height:92dvh;overflow:auto;padding:17px}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.summary-tile{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px}.summary-tile span{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}.summary-tile b{font-size:17px}.summary-row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.summary-row b{text-align:right}</style>
+</head>
+<body>
+<header class="header">
+ <div class="brand"><div class="logo">💼</div><div><h1>ŻYCIE BIZNESMENA</h1><div class="sub">Wersja mobilna • Imperium 7.1</div></div><div class="day"><span id="dayBadge">MIESIĄC 1</span><br><span id="ageBadge">WIEK 18 LAT</span></div></div>
+ <div class="balance-label">GOTÓWKA</div><div class="balance" id="cash">10 000 zł</div>
+ <div class="stats"><div class="stat"><span>Przychód brutto / miesiąc</span><strong id="gross">0 zł</strong></div><div class="stat"><span>Zysk po kosztach</span><strong id="net">0 zł</strong></div><div class="stat"><span>Podatek 15%</span><strong id="tax">0 zł</strong></div><div class="stat"><span>Reputacja firmy</span><strong id="repScore">10 pkt</strong></div></div>
+</header>
+<main class="wrap">
+ <nav class="nav">
+  <button class="active" data-tab="home">📊<br>Pulpit</button><button data-tab="firms">🏪<br>Firmy</button><button data-tab="manage">🧠<br>Zarządzanie</button><button data-tab="estate">🏠<br>Majątek</button><button data-tab="more">☰<br>Więcej</button>
+ </nav>
+ <section class="panel active" id="home">
+  <div class="title">Pulpit przedsiębiorcy</div><p class="muted">Buduj imperium miesiąc po miesiącu.</p><div class="card"><div class="row"><span>Wiek gracza</span><b id="ageValue">18 lat</b></div><div class="row"><span>Etap życia</span><b id="lifeStage">Początek kariery</b></div><div class="progress"><div id="lifeProgress" style="width:0%"></div></div><p class="small" id="lifeHint">Podejmuj decyzje i rozwijaj swój majątek przez kolejne lata.</p></div>
+  <div class="card"><h3 style="margin-top:0">Miesięczny rachunek</h3><div class="row"><span>Przychody firm i wynajmu</span><b id="rGross">0 zł</b></div><div class="row"><span>Podatek</span><b id="rTax">0 zł</b></div><div class="row"><span>Utrata klientów przez konkurencję</span><b id="rCompetition">0 zł</b></div><div class="row"><span>Wynagrodzenia</span><b id="rWages">0 zł</b></div><div class="row"><span>Rata kredytu</span><b id="rLoan">0 zł</b></div><div class="row"><strong>Szacowany zysk</strong><strong id="rNet">0 zł</strong></div></div>
+  <div class="notice"><b>Wiadomości z rynku</b><div id="news" style="margin-top:6px">Witaj! Masz 10 000 zł kapitału. Kup pierwszą firmę, aby zacząć zarabiać.</div></div>
+  <div class="actions"><button onclick="showTab('firms')">Kup lub ulepsz firmę</button><button class="secondary" onclick="showTab('estate')">Zainwestuj w nieruchomości</button><button class="secondary" onclick="showTab('bank')">Zarządzaj kredytem</button><button id="endDay">Zakończ miesiąc →</button></div>
+ </section>
+ <section class="panel" id="firms"><div class="title">Przedsiębiorstwa</div><p class="muted">Kupuj firmy i ulepszaj je (posortowane od najtańszych do najdroższych).</p><div id="businessList"></div><div class="card"><h3>Marketing</h3><p class="muted">Koszt 2 000 zł. Zwiększa przychody o 20% na stałe.</p><div id="marketingAction"></div></div></section>
+ <section class="panel" id="manage"><div class="title">Centrum zarządzania</div><p class="muted">Każda firma ma własne ceny, jakość, obsadę, zapasy i reklamę.</p>
+ <div class="card"><label for="manageBusiness"><b>Wybierz przedsiębiorstwo</b></label><select id="manageBusiness" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;margin-top:8px;background:white;font:inherit"></select><div id="manageEditor" style="margin-top:14px"></div></div>
+ <div class="card"><h3 style="margin-top:0">Prognoza miesięczna wybranej firmy</h3><div class="row"><span>Przychód prognozowany</span><b id="mRevenue">0 zł</b></div><div class="row"><span>Towar i materiały</span><b id="mGoods">0 zł</b></div><div class="row"><span>Płace i utrzymanie</span><b id="mCosts">0 zł</b></div><div class="row"><span>Reklama</span><b id="mAds">0 zł</b></div><div class="row"><strong>Szacowany wynik firmy</strong><strong id="mProfit">0 zł</strong></div></div>
+ <div class="card"><h3 style="margin-top:0">Decyzje strategiczne</h3><div class="actions"><button id="trainingAction">Szkolenie zespołu — 1 200 zł</button><button class="secondary" id="supplierAction">Negocjuj z dostawcami — 900 zł</button><button class="secondary" id="researchAction">Badanie rynku — 700 zł</button></div><div class="small" id="strategyStatus" style="margin-top:10px"></div></div>
+ </section>
+ <section class="panel" id="estate"><div class="title">Centrum zakupów</div><p class="muted">Wybierz osobny dział sklepu.</p><div class="actions"><button onclick="showTab('realestate')">🏠 Rynek nieruchomości</button><button class="secondary" onclick="showTab('cars')">🚘 Salon samochodowy</button><button class="secondary" onclick="showTab('casino')">🎰 Kasyno</button><button class="secondary" onclick="showTab('jobs')">🧰 Prace dorywcze</button></div><div class="card"><h3>Twój majątek i reputacja</h3><div class="row"><span>Nieruchomości</span><b id="ownedPropertyCount">0</b></div><div class="row"><span>Samochody</span><b id="ownedVehicleCount">0</b></div><div class="row"><span>Oddziały biznesów</span><b id="ownedBusinessCount">0</b></div><div class="row"><span>Panel Reputacji</span><b id="repPanelVal" style="color:var(--green)">10 pkt</b></div></div></section>
+<section class="panel" id="realestate"><div class="title">🏠 Rynek nieruchomości</div><p class="muted">Kupuj mieszkania i lokale (od najtańszych).</p><div id="propertyList"></div><button class="secondary" onclick="showTab('estate')">← Wróć do centrum zakupów</button></section>
+<section class="panel" id="cars"><div class="title">🚘 Salon samochodowy</div><p class="muted">Auta poukładane od najtańszego do najdroższego.</p><div id="vehicleList"></div><button class="secondary" onclick="showTab('estate')">← Wróć do centrum zakupów</button></section>
+<section class="panel" id="casino"><div class="title">🎰 Kasyno</div><div class="card"><h3>Rzut monetą</h3><label for="coinBet">Stawka (zł), 100–5 000</label><input id="coinBet" type="number" min="100" max="5000" step="100" value="500" style="width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;margin:8px 0 12px;font:inherit"><div class="actions"><button onclick="playCasino('orzel')">🪙 Orzeł</button><button class="secondary" onclick="playCasino('reszka')">🪙 Reszka</button></div><p id="casinoResult" class="notice" style="margin-top:12px">Wybierz stawkę i stronę monety.</p><div class="row"><span>Bilans kasyna w karierze</span><b id="casinoNet">0 zł</b></div></div><button class="secondary" onclick="showTab('estate')">← Wróć do centrum zakupów</button></section>
+<section class="panel" id="jobs"><div class="title">🧰 Prace dorywcze</div><div id="jobsList"></div><div class="card"><div class="row"><span>Zarobki z prac dorywczych</span><b id="gigTotal">0 zł</b></div><div class="row"><span>Miesięczna praca</span><b id="gigStatus">Dostępna</b></div></div><button class="secondary" onclick="showTab('estate')">← Wróć do centrum zakupów</button></section>
+ <section class="panel" id="more">
+  <div class="title">Więcej możliwości</div>
+  <div class="actions"><button onclick="showTab('bank')">🏦 Bank i kredyty</button><button class="secondary" onclick="showTab('staff')">👥 Zespół i marketing</button><button class="secondary" onclick="showTab('market')">⚔️ Rynek i konkurencja</button><button class="secondary" onclick="showTab('realestate')">🏠 Nieruchomości</button><button class="secondary" onclick="showTab('cars')">🚘 Salon samochodowy</button><button class="secondary" onclick="showTab('casino')">🎰 Kasyno</button><button class="secondary" onclick="showTab('jobs')">🧰 Prace dorywcze</button><button class="secondary" onclick="showTab('awards')">🏆 Osiągnięcia</button><button class="secondary" onclick="showTab('save')">💾 Zapis i wczytywanie</button><button class="danger" onclick="newGame()">Rozpocznij nową karierę</button></div>
+ </section>
+ <section class="panel" id="bank"><div class="title">Bank i zadłużenie</div><div class="card"><h3>Kredyt firmowy</h3><div class="row"><span>Aktualny dług</span><b id="debt">0 zł</b></div><div class="row"><span>Pozostałe raty (miesiące)</span><b id="payments">0</b></div><div id="loanAction"></div></div></section>
+ <section class="panel" id="staff"><div class="title">Zespół i marketing</div><div class="card"><div class="row"><span>Liczba pracowników</span><b id="staffCount">0</b></div><div class="row"><span>Koszt miesięczny</span><b id="staffCost">0 zł</b></div><button id="hire">Zatrudnij pracownika — 1 500 zł</button></div><div class="card"><h3>Marketing</h3><div id="marketingAction2"></div></div></section>
+ <section class="panel" id="market"><div class="title">Rynek i konkurencja</div><div class="card"><h3>Konkurencja miejska</h3><div class="row"><span>Presja rywali</span><b id="rival2">20%</b></div><div class="progress"><div id="rivalBar" style="width:20%"></div></div><div class="row"><span>Utracony przychód miesięczny</span><b id="compLoss">0 zł</b></div><button id="imageCampaign">Kampania wizerunkowa — 2 000 zł</button></div></section>
+ <section class="panel" id="awards"><div class="title">Osiągnięcia</div><div id="achievementList"></div></section>
+ <section class="panel" id="save"><div class="title">Zapis i wczytywanie</div><div class="card"><div class="actions"><button id="exportSave">Utwórz kod zapisu</button><textarea class="field" id="saveText" placeholder="Kod zapisu..."></textarea><button class="secondary" id="copySave">Kopiuj kod</button><button class="secondary" id="importSave">Wczytaj kod z pola</button></div><p class="small" id="saveStatus"></p></div><button class="secondary" id="manualSave">Zapisz teraz</button></section>
+ <section class="panel" id="bankrupt"><div class="card"><h2>⚠️ Bankructwo</h2><p>Twoje zadłużenie przekroczyło -10 000 zł. Twoja firma zbankrutowała.</p><button onclick="newGame()">Rozpocznij nową karierę</button></div></section>
+ <div class="footer">Życie Biznesmena 7.1 • Wirtualna ekonomia</div>
+</main>
+<div class="summary-overlay" id="daySummary" role="dialog" aria-modal="true"><div class="summary-sheet"><div class="row"><div><h2>📒 Zamknięcie miesiąca</h2><p class="muted" id="summarySubtitle">Bilans miesiąca</p></div><button class="secondary" id="closeSummary">✕</button></div><div class="summary-grid"><div class="summary-tile"><span>Przychody razem</span><b id="sumRevenue">0 zł</b></div><div class="summary-tile"><span>Wydatki razem</span><b id="sumCosts">0 zł</b></div><div class="summary-tile"><span>Wynik miesiąca</span><b id="sumProfit">0 zł</b></div><div class="summary-tile"><span>Gotówka po zamknięciu</span><b id="sumBalance">0 zł</b></div></div><div class="card"><h3>Szczegółowy bilans</h3><div id="summaryRows"></div></div><div class="card"><h3>Wynik poszczególnych firm</h3><div id="summaryFirms"></div></div><div class="notice" id="summaryEvent"></div><button id="summaryContinue" style="width:100%;margin-top:12px">Kontynuuj następny miesiąc</button></div></div>
+<script>
+const businesses=[
+{id:"food",name:"Food Truck",emoji:"🍔",price:5000,base:450,upgrade:2500,desc:"Mobilna gastronomia."},
+{id:"shop",name:"Sklep osiedlowy",emoji:"🏪",price:8000,base:650,upgrade:4000,desc:"Codzienne zakupy."},
+{id:"salon",name:"Salon fryzjerski",emoji:"💈",price:12000,base:850,upgrade:5000,desc:"Usługi lokalne."},
+{id:"wash",name:"Myjnia samochodowa",emoji:"🚘",price:15000,base:1100,upgrade:7000,desc:"Usługi dla kierowców."},
+{id:"laundry",name:"Pralnia",emoji:"🧺",price:18000,base:1250,upgrade:8000,desc:"Usługi dla mieszkańców i hoteli."},
+{id:"barber",name:"Barber shop",emoji:"💈",price:18000,base:1250,upgrade:7500,desc:"Usługi premium i lojalni klienci."},
+{id:"cafe",name:"Kawiarnia",emoji:"☕",price:22000,base:1550,upgrade:9500,desc:"Kawa, desery i stali klienci."},
+{id:"office",name:"Biuro usługowe",emoji:"🏢",price:25000,base:1800,upgrade:12000,desc:"Usługi dla klientów i firm."},
+{id:"bakery",name:"Piekarnia rzemieślnicza",emoji:"🥐",price:28000,base:1950,upgrade:11000,desc:"Świeże pieczywo i poranny ruch."},
+{id:"restaurant",name:"Restauracja",emoji:"🍽️",price:35000,base:2600,upgrade:16000,desc:"Duży obrót, wymagające zapasy."},
+{id:"petshop",name:"Sklep zoologiczny",emoji:"🐾",price:36000,base:2450,upgrade:14500,desc:"Karma, akcesoria i usługi."},
+{id:"gym",name:"Siłownia",emoji:"🏋️",price:42000,base:2900,upgrade:18000,desc:"Karnety i trenerzy."},
+{id:"agency",name:"Agencja marketingowa",emoji:"📣",price:45000,base:3400,upgrade:19000,desc:"Kontrakty i praca zespołowa."},
+{id:"carrepair",name:"Warsztat samochodowy",emoji:"🔧",price:58000,base:3900,upgrade:24000,desc:"Naprawy, przeglądy i serwis flot."},
+{id:"software",name:"Studio IT",emoji:"💻",price:70000,base:5200,upgrade:28000,desc:"Projekty cyfrowe."},
+{id:"security",name:"Agencja ochrony",emoji:"🛡️",price:76000,base:5100,upgrade:29000,desc:"Kontrakty firmowe i personel."},
+{id:"factory",name:"Mała fabryka",emoji:"🏭",price:80000,base:6000,upgrade:30000,desc:"Produkcja na większą skalę."},
+{id:"cowork",name:"Coworking",emoji:"🧑‍💻",price:88000,base:5900,upgrade:32000,desc:"Biurka i sale konferencyjne."},
+{id:"logistics",name:"Firma kurierska",emoji:"🚚",price:95000,base:6700,upgrade:35000,desc:"Flota i dostawy."},
+{id:"daycare",name:"Prywatne przedszkole",emoji:"🧸",price:115000,base:7600,upgrade:39000,desc:"Stałe opłaty i wymagania kadrowe."},
+{id:"hotel",name:"Hotel butikowy",emoji:"🛎️",price:125000,base:8500,upgrade:45000,desc:"Wysokie przychody i koszty personelu."},
+{id:"market",name:"Supermarket",emoji:"🛒",price:145000,base:9800,upgrade:50000,desc:"Duży ruch i koszty towaru."},
+{id:"clinic",name:"Prywatna klinika",emoji:"🩺",price:160000,base:10500,upgrade:55000,desc:"Usługi premium."},
+{id:"cinema",name:"Kino studyjne",emoji:"🎬",price:185000,base:11900,upgrade:65000,desc:"Bilety, wydarzenia i gastronomia."},
+{id:"gasstation",name:"Stacja paliw",emoji:"⛽",price:220000,base:14500,upgrade:78000,desc:"Duże obroty i koszty zapasów."}
+];
+
+const locations=[{id:"suburb",name:"Przedmieścia",mult:.78},{id:"residential",name:"Osiedle mieszkaniowe",mult:.92},{id:"center",name:"Centrum miasta",mult:1.25},{id:"mall",name:"Galeria handlowa",mult:1.42},{id:"industrial",name:"Strefa przemysłowa",mult:.88},{id:"tourist",name:"Dzielnica turystyczna",mult:1.35}];
+
+const propertiesData=[
+{id:"garage",name:"Garaż na wynajem",emoji:"🚗",price:7000,rent:250},
+{id:"flat",name:"Mieszkanie",emoji:"🏠",price:20000,rent:650},
+{id:"warehouse",name:"Magazyn",emoji:"🏭",price:40000,rent:1400},
+{id:"microflat",name:"Mikrokawalerka",emoji:"🛏️",price:42000,rent:1350},
+{id:"studio",name:"Kawalerka",emoji:"🛋️",price:55000,rent:1800},
+{id:"officeunit",name:"Lokal usługowy",emoji:"🏬",price:85000,rent:2800},
+{id:"twoRoom",name:"Mieszkanie 2-pokojowe",emoji:"🏠",price:98000,rent:2900},
+{id:"land",name:"Działka inwestycyjna",emoji:"🌳",price:110000,rent:500},
+{id:"smallOffice",name:"Małe biuro na wynajem",emoji:"🏢",price:125000,rent:3600},
+{id:"townhouse",name:"Dom szeregowy",emoji:"🏡",price:145000,rent:3900},
+{id:"parking",name:"Parking wielostanowiskowy",emoji:"🅿️",price:160000,rent:4300},
+{id:"familyFlat",name:"Mieszkanie rodzinne",emoji:"🏡",price:175000,rent:4700},
+{id:"retailPark",name:"Lokal w parku handlowym",emoji:"🏬",price:245000,rent:7900},
+{id:"apartment",name:"Apartament premium",emoji:"🌇",price:280000,rent:7200},
+{id:"holidayHome",name:"Domek wakacyjny",emoji:"🌴",price:340000,rent:8500},
+{id:"tenement",name:"Kamienica",emoji:"🏛️",price:520000,rent:13500},
+{id:"penthouse",name:"Penthouse z tarasem",emoji:"🏙️",price:650000,rent:16000},
+{id:"officeBuilding",name:"Biurowiec",emoji:"🏢",price:1100000,rent:29000},
+{id:"logisticsCenter",name:"Centrum logistyczne",emoji:"🚛",price:1450000,rent:39000},
+{id:"shoppingMall",name:"Mini galeria handlowa",emoji:"🛍️",price:2100000,rent:58000}
+];
+
+const vehiclesData=[
+{id:"scooter",name:"Skuter elektryczny",emoji:"🛵",price:3000,prestige:1},
+{id:"compact",name:"Używany hatchback",emoji:"🚗",price:12000,prestige:3},
+{id:"sedan",name:"Sedan biznesowy",emoji:"🚘",price:35000,prestige:8},
+{id:"suv",name:"Nowoczesny SUV",emoji:"🚙",price:65000,prestige:14},
+{id:"sports",name:"Sportowe coupe",emoji:"🏎️",price:120000,prestige:24},
+{id:"limo",name:"Luksusowa limuzyna",emoji:"🚘",price:210000,prestige:38},
+{id:"supercar",name:"Super samochód",emoji:"🏎️",price:480000,prestige:65},
+{id:"hypercar",name:"Unikatowy Hypercar",emoji:"⚡",price:1200000,prestige:110}
+];
+
+const sideJobs=[
+{id:"delivery",name:"Dostawy kurierskie",emoji:"🚴",pay:500,energy:"Niska"},
+{id:"freelance",name:"Proste zlecenia online",emoji:"💻",pay:1200,energy:"Średnia"},
+{id:"consulting",name:"Konsultacje biznesowe",emoji:"📊",pay:3000,energy:"Wysoka"}
+];
+
+const achievementsData=[
+{id:"a1",title:"Pierwszy krok",desc:"Kup pierwszy biznes.",check:s=>ownedBusinessCount(s)>=1},
+{id:"a2",title:"Podusza finansowa",desc:"Zgromadź 50 000 zł gotówki.",check:s=>s.cash>=50000},
+{id:"a3",title:"Imperium nieruchomości",desc:"Posiadaj co najmniej 3 nieruchomości.",check:s=>ownedPropertyCount(s)>=3},
+{id:"a4",title:"Dojrzały przedsiębiorca",desc:"Osiągnij wiek 30 lat.",check:s=>s.age>=30},
+{id:"a5",title:"Szanowany inwestor",desc:"Osiągnij reputację wynoszącą min. 50 pkt.",check:s=>calculateReputation(s)>=50},
+{id:"a6",title:"Milioner",desc:"Posiadaj 1 000 000 zł gotówki.",check:s=>s.cash>=1000000}
+];
+
+let state={
+ day:1,
+ age:18,
+ cash:10000,
+ businesses:{},
+ bizSettings:{},
+ properties:{},
+ vehicles:[],
+ gigDone:false,
+ gigEarnings:0,
+ casinoNet:0,
+ staff:0,
+ marketing:0,
+ loan:0,
+ loanPayments:0,
+ competition:0.2,
+ strategyBonus:{price:.05,cost:.05,quality:.05},
+ achievements:[],
+ eventHistory:[]
+};
+
+function initBusinessSettings(id){
+ if(!state.bizSettings[id]){
+  state.bizSettings[id]={
+   priceMult:1,
+   staffCount:1,
+   quality:2,
+   stock:2,
+   adBudget:1,
+   location:"residential"
+  };
+ }
+}
+
+function getBaseBiz(id){return businesses.find(b=>b.id===id);}
+function ownedBusinessCount(s=state){return Object.values(s.businesses).reduce((a,b)=>a+b,0);}
+function ownedPropertyCount(s=state){return Object.values(s.properties).reduce((a,b)=>a+b,0);}
+function ownedVehicleCount(s=state){return s.vehicles.length;}
+
+function calculateReputation(s=state){
+ const bizPoints=ownedBusinessCount(s)*3;
+ const propPoints=ownedPropertyCount(s)*2;
+ const vehPoints=s.vehicles.reduce((acc,id)=>{
+  const v=vehiclesData.find(item=>item.id===id);
+  return acc+(v?v.prestige:0);
+ },0);
+ const mktPoints=s.marketing*4;
+ return 10+bizPoints+propPoints+vehPoints+mktPoints;
+}
+
+function calcBusinessFinance(id){
+ const base=getBaseBiz(id);
+ const count=state.businesses[id]||0;
+ if(!count) return {revenue:0,goods:0,costs:0,ads:0,profit:0};
+ initBusinessSettings(id);
+ const set=state.bizSettings[id];
+ const loc=locations.find(l=>l.id===set.location)||locations[1];
+
+ const baseRev=base.base*count*loc.mult;
+ const priceEff=Math.max(.4,1.4 - (set.priceMult - 1)*.8 + (state.strategyBonus.price||0));
+ const qualityEff=1 + (set.quality - 2)*.12 + (state.strategyBonus.quality||0);
+ const adEff=1 + (set.adBudget - 1)*.15;
+ const repEff=1 + Math.min(.5,(calculateReputation()-10)*.008);
+
+ const revenue=Math.round(baseRev * set.priceMult * priceEff * qualityEff * adEff * repEff);
+
+ const goodsBase=Math.round(revenue*(0.22 + set.stock*0.04)*(1 - (state.strategyBonus.cost||0)));
+ const wages=set.staffCount * 1300 * count;
+ const qualityCost=(set.quality - 1) * 350 * count;
+ const adsCost=(set.adBudget - 1) * 500 * count;
+ const costs=wages + qualityCost;
+
+ return {revenue,goods:goodsBase,costs,ads:adsCost,profit:revenue - goodsBase - costs - adsCost};
+}
+
+function totals(){
+ let gross=0, goodsCost=0, bizCosts=0, adsTotal=0;
+ businesses.forEach(b=>{
+  if(state.businesses[b.id]){
+   const f=calcBusinessFinance(b.id);
+   gross+=f.revenue;
+   goodsCost+=f.goods;
+   bizCosts+=f.costs;
+   adsTotal+=f.ads;
+  }
+ });
+
+ let rentIncome=0;
+ Object.entries(state.properties).forEach(([pid,qty])=>{
+  const p=propertiesData.find(x=>x.id===pid);
+  if(p) rentIncome+=p.rent*qty;
+ });
+
+ gross+=rentIncome;
+
+ const compLoss=Math.round(gross*state.competition*0.2);
+ const staffCost=state.staff*1500;
+ const loanRata=state.loanPayments>0 ? Math.round(state.loan/state.loanPayments) : 0;
+ const totalCosts=compLoss+staffCost+loanRata+goodsCost+bizCosts+adsTotal;
+
+ const taxable=Math.max(0,gross - totalCosts);
+ const tax=Math.round(taxable*0.15);
+ const net=gross - tax - totalCosts;
+
+ return {gross,compLoss,staffCost,loanRata,goodsCost,bizCosts,adsTotal,tax,net,rentIncome};
+}
+
+function formatMoney(v){return new Intl.NumberFormat("pl-PL").format(Math.round(v))+" zł";}
+
+function showTab(id){
+ document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+ const panel=document.getElementById(id);
+ if(panel) panel.classList.add("active");
+
+ const navBtn=document.querySelector(`.nav button[data-tab="${id}"]`);
+ if(navBtn) navBtn.classList.add("active");
+ else if(["realestate","cars","casino","jobs"].includes(id)){
+  const estateBtn=document.querySelector('.nav button[data-tab="estate"]');
+  if(estateBtn) estateBtn.classList.add("active");
+ }
+ render();
+}
+
+function checkAchievements(){
+ achievementsData.forEach(a=>{
+  if(!state.achievements.includes(a.id)&&a.check(state)){
+   state.achievements.push(a.id);
+   alert(`🏆 Osiągnięcie odblokowane: ${a.title}`);
+  }
+ });
+}
+
+function playCasino(choice){
+ const betInput=document.getElementById("coinBet");
+ const bet=parseInt(betInput.value,10);
+ if(isNaN(bet)||bet<100||bet>5000){
+  alert("Wpisz stawkę od 100 do 5 000 zł!");
+  return;
+ }
+ if(state.cash<bet){
+  alert("Masz za mało gotówki!");
+  return;
+ }
+
+ const win=Math.random()<0.48;
+ const landed=win?choice:(choice==="orzel"?"reszka":"orzel");
+
+ if(win){
+  state.cash+=bet;
+  state.casinoNet+=bet;
+  document.getElementById("casinoResult").textContent=`Wygrałeś! Wypadł ${landed}. Wygrana: +${formatMoney(bet)}.`;
+ }else{
+  state.cash-=bet;
+  state.casinoNet-=bet;
+  document.getElementById("casinoResult").textContent=`Przegrałeś! Wypadł ${landed}. Strata: -${formatMoney(bet)}.`;
+ }
+ render();
+}
+
+function doGig(id){
+ if(state.gigDone){
+  alert("W tym miesiącu wykonałeś już pracę dorywczą!");
+  return;
+ }
+ const job=sideJobs.find(j=>j.id===id);
+ if(!job) return;
+
+ state.cash+=job.pay;
+ state.gigEarnings+=job.pay;
+ state.gigDone=true;
+ alert(`Wykonano: ${job.name}. Zarobek: +${formatMoney(job.pay)}.`);
+ render();
+}
+
+function updateLifeStage(){
+ const progress=Math.min(100,Math.max(0,((state.age-18)/(65-18))*100));
+ document.getElementById("lifeProgress").style.width=`${progress}%`;
+ document.getElementById("lifeValue").textContent=`${state.age} lat`;
+
+ let stage="Początek kariery";
+ let hint="Inwestuj w pierwsze biznesy i ucz się rynku.";
+ if(state.age>=25&&state.age<35){
+  stage="Młody przedsiębiorca";
+  hint="Czas na budowanie portfela firm i nieruchomości.";
+ }else if(state.age>=35&&state.age<50){
+  stage="Dojrzały inwestor";
+  hint="Optymalizuj koszty, automatyzuj i buduj majątek trwały.";
+ }else if(state.age>=50&&state.age<65){
+  stage="Rekin biznesu";
+  hint="Twoje decyzje dyktują warunki na rynku.";
+ }else if(state.age>=65){
+  stage="Zasłużony emeryt biznesu";
+  hint="Ciesz się zgromadzonym kapitałem i reputacją.";
+ }
+ document.getElementById("lifeStage").textContent=stage;
+ document.getElementById("lifeHint").textContent=hint;
+}
+
+function render(){
+ const t=totals();
+ document.getElementById("cash").textContent=formatMoney(state.cash);
+ document.getElementById("gross").textContent=formatMoney(t.gross);
+ document.getElementById("net").textContent=formatMoney(t.net);
+ document.getElementById("tax").textContent=formatMoney(t.tax);
+ document.getElementById("repScore").textContent=`${calculateReputation()} pkt`;
+
+ const ageYears=state.age;
+ document.getElementById("dayBadge").textContent=`MIESIĄC ${state.day}`;
+ document.getElementById("ageBadge").textContent=`WIEK ${ageYears} LAT`;
+ document.getElementById("ageValue").textContent=`${ageYears} lat`;
+ updateLifeStage();
+
+ document.getElementById("rGross").textContent=formatMoney(t.gross);
+ document.getElementById("rTax").textContent=formatMoney(t.tax);
+ document.getElementById("rCompetition").textContent=formatMoney(t.compLoss);
+ document.getElementById("rWages").textContent=formatMoney(t.staffCost + t.bizCosts);
+ document.getElementById("rLoan").textContent=formatMoney(t.loanRata);
+ document.getElementById("rNet").textContent=formatMoney(t.net);
+
+ renderBusinessList();
+ renderManagePanel();
+ renderPropertyList();
+ renderVehicleList();
+ renderJobsList();
+ renderBank();
+ renderStaff();
+ renderMarket();
+ renderAchievements();
+
+ document.getElementById("ownedPropertyCount").textContent=ownedPropertyCount();
+ document.getElementById("ownedVehicleCount").textContent=ownedVehicleCount();
+ document.getElementById("ownedBusinessCount").textContent=ownedBusinessCount();
+ document.getElementById("repPanelVal").textContent=`${calculateReputation()} pkt`;
+ document.getElementById("casinoNet").textContent=formatMoney(state.casinoNet);
+ document.getElementById("gigTotal").textContent=formatMoney(state.gigEarnings);
+ document.getElementById("gigStatus").textContent=state.gigDone?"Wykonana w tym miesiącu":"Dostępna";
+
+ if(state.cash<-10000){
+  showTab("bankrupt");
+ }
+ checkAchievements();
+}
+
+function renderBusinessList(){
+ const list=document.getElementById("businessList");
+ list.innerHTML="";
+
+ businesses.forEach(b=>{
+  const count=state.businesses[b.id]||0;
+  const upgradeCost=b.upgrade*(count+1);
+  const fin=calcBusinessFinance(b.id);
+
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+   <div class="itemhead">
+    <div class="emoji">${b.emoji}</div>
+    <div>
+     <h3>${b.name} <span class="pill">${count} szt.</span></h3>
+     <p>${b.desc}</p>
+    </div>
+   </div>
+   <div class="row"><span>Cena zakupu pierwszej / kolejnej:</span><b>${formatMoney(b.price)}</b></div>
+   <div class="row"><span>Szacowany przychód filii:</span><b class="money">+${formatMoney(fin.revenue)} / ms</b></div>
+   <div class="row"><span>Prognozowany zysk filii:</span><b class="money">${formatMoney(fin.profit)} / ms</b></div>
+   <div class="itemfoot">
+    <div>
+     <small>Koszt ulepszenia (+wydajność)</small>
+     <b>${count>0?formatMoney(upgradeCost):"Kup najpierw biznes"}</b>
+    </div>
+    <div style="display:flex;gap:6px">
+     <button onclick="buyBiz('${b.id}')" ${state.cash<b.price?"disabled":""}>Kup</button>
+     <button class="secondary" onclick="upgradeBiz('${b.id}')" ${count===0||state.cash<upgradeCost?"disabled":""}>Ulepsz</button>
+    </div>
+   </div>
+  `;
+  list.appendChild(card);
+ });
+
+ const mktBox=document.getElementById("marketingAction");
+ mktBox.innerHTML=`
+  <div class="row"><span>Aktualny poziom marketingu:</span><b>Poziom ${state.marketing}</b></div>
+  <button onclick="buyMarketing()" ${state.cash<2000?"disabled":""}>Kup marketing (2 000 zł)</button>
+ `;
+}
+
+function renderManagePanel(){
+ const select=document.getElementById("manageBusiness");
+ const owned=businesses.filter(b=>(state.businesses[b.id]||0)>0);
+
+ select.innerHTML="";
+ if(owned.length===0){
+  select.innerHTML='<option value="">Nie posiadasz jeszcze żadnej firmy</option>';
+  document.getElementById("manageEditor").innerHTML='<p class="muted">Kup pierwszą firmę w zakładce "Firmy", aby odblokować zarządzenie.</p>';
+  document.getElementById("mRevenue").textContent="0 zł";
+  document.getElementById("mGoods").textContent="0 zł";
+  document.getElementById("mCosts").textContent="0 zł";
+  document.getElementById("mAds").textContent="0 zł";
+  document.getElementById("mProfit").textContent="0 zł";
+  return;
+ }
+
+ owned.forEach(b=>{
+  const opt=document.createElement("option");
+  opt.value=b.id;
+  opt.textContent=`${b.emoji} ${b.name} (${state.businesses[b.id]} szt.)`;
+  select.appendChild(opt);
+ });
+
+ if(!select.value&&owned.length>0) select.value=owned[0].id;
+ const currentId=select.value;
+ initBusinessSettings(currentId);
+ const set=state.bizSettings[currentId];
+ const fin=calcBusinessFinance(currentId);
+
+ document.getElementById("manageEditor").innerHTML=`
+  <div class="mgline">
+   <label><span>Mnożnik cen produktów / usług</span><strong>${set.priceMult.toFixed(2)}x</strong></label>
+   <input type="range" class="mgrange" min="0.5" max="2.0" step="0.05" value="${set.priceMult}" onchange="updateBizSetting('${currentId}','priceMult',this.value)">
+  </div>
+  <div class="mgline">
+   <label><span>Obsada kadrowa na lokal</span><strong>${set.staffCount} os.</strong></label>
+   <input type="range" class="mgrange" min="1" max="5" step="1" value="${set.staffCount}" onchange="updateBizSetting('${currentId}','staffCount',this.value)">
+  </div>
+  <div class="mgline">
+   <label><span>Jakość / Standard</span><strong>Poziom ${set.quality}</strong></label>
+   <input type="range" class="mgrange" min="1" max="4" step="1" value="${set.quality}" onchange="updateBizSetting('${currentId}','quality',this.value)">
+  </div>
+  <div class="mgline">
+   <label><span>Poziom zatowarowania / materiałów</span><strong>Poziom ${set.stock}</strong></label>
+   <input type="range" class="mgrange" min="1" max="4" step="1" value="${set.stock}" onchange="updateBizSetting('${currentId}','stock',this.value)">
+  </div>
+  <div class="mgline">
+   <label><span>Lokalny budżet reklamowy</span><strong>Poziom ${set.adBudget}</strong></label>
+   <input type="range" class="mgrange" min="1" max="4" step="1" value="${set.adBudget}" onchange="updateBizSetting('${currentId}','adBudget',this.value)">
+  </div>
+  <div class="mgline">
+   <label><span>Lokalizacja główna</span></label>
+   <select class="mgselect" onchange="updateBizSetting('${currentId}','location',this.value)">
+    ${locations.map(l=>`<option value="${l.id}" ${set.location===l.id?"selected":""}>${l.name} (mnożnik x${l.mult})</option>`).join("")}
+   </select>
+  </div>
+ `;
+
+ document.getElementById("mRevenue").textContent=formatMoney(fin.revenue);
+ document.getElementById("mGoods").textContent=formatMoney(fin.goods);
+ document.getElementById("mCosts").textContent=formatMoney(fin.costs);
+ document.getElementById("mAds").textContent=formatMoney(fin.ads);
+ document.getElementById("mProfit").textContent=formatMoney(fin.profit);
+
+ document.getElementById("strategyStatus").textContent=`Premia strategiczna: Jakość +${Math.round((state.strategyBonus.quality||0)*100)}%, Koszt dostaw -${Math.round((state.strategyBonus.cost||0)*100)}%, Popyt +${Math.round((state.strategyBonus.price||0)*100)}%`;
+}
+
+function updateBizSetting(id,field,val){
+ initBusinessSettings(id);
+ if(field==="location") state.bizSettings[id][field]=val;
+ else state.bizSettings[id][field]=parseFloat(val);
+ render();
+}
+
+function renderPropertyList(){
+ const list=document.getElementById("propertyList");
+ list.innerHTML="";
+
+ propertiesData.forEach(p=>{
+  const qty=state.properties[p.id]||0;
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+   <div class="itemhead">
+    <div class="emoji">${p.emoji}</div>
+    <div>
+     <h3>${p.name} <span class="pill">${qty} szt.</span></h3>
+     <p>Stabilny przychód pasywny z wynajmu.</p>
+    </div>
+   </div>
+   <div class="row"><span>Cena zakupu:</span><b>${formatMoney(p.price)}</b></div>
+   <div class="row"><span>Czynsz najmu:</span><b class="money">+${formatMoney(p.rent)} / ms</b></div>
+   <div class="itemfoot">
+    <div><small>Zwrot z inwestycji</small><b>ok. ${Math.round((p.rent*12/p.price)*100)}% rocznie</b></div>
+    <button onclick="buyProperty('${p.id}')" ${state.cash<p.price?"disabled":""}>Kup nieruchomość</button>
+   </div>
+  `;
+  list.appendChild(card);
+ });
+}
+
+function renderVehicleList(){
+ const list=document.getElementById("vehicleList");
+ list.innerHTML="";
+
+ vehiclesData.forEach(v=>{
+  const owned=state.vehicles.includes(v.id);
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+   <div class="itemhead">
+    <div class="emoji">${v.emoji}</div>
+    <div>
+     <h3>${v.name} ${owned?'<span class="pill">Posiadany</span>':""}</h3>
+     <p>Samochód podnosi prestiż i reputację biznesową.</p>
+    </div>
+   </div>
+   <div class="row"><span>Cena:</span><b>${formatMoney(v.price)}</b></div>
+   <div class="row"><span>Punkty reputacji:</span><b class="money">+${v.prestige} pkt</b></div>
+   <div class="itemfoot">
+    <div><small>Status</small><b>${owned?"W garażu":"Dostępny w salonie"}</b></div>
+    <button onclick="buyVehicle('${v.id}')" ${owned||state.cash<v.price?"disabled":""}>${owned?"Posiadasz":"Kup pojazd"}</button>
+   </div>
+  `;
+  list.appendChild(card);
+ });
+}
+
+function renderJobsList(){
+ const list=document.getElementById("jobsList");
+ list.innerHTML="";
+
+ sideJobs.forEach(j=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.innerHTML=`
+   <div class="itemhead">
+    <div class="emoji">${j.emoji}</div>
+    <div>
+     <h3>${j.name}</h3>
+     <p>Szybki zastrzyk gotówki bez długoterminowych zobowiązań.</p>
+    </div>
+   </div>
+   <div class="row"><span>Wynagrodzenie:</span><b class="money">+${formatMoney(j.pay)}</b></div>
+   <div class="row"><span>Wymagany czas:</span><b>1 miesiąc</b></div>
+   <div class="itemfoot">
+    <div><small>Dostępność</small><b>${state.gigDone?"Wykorzystana w tym miesiącu":"Dostępna zaraz"}</b></div>
+    <button onclick="doGig('${j.id}')" ${state.gigDone?"disabled":""}>Wykonaj pracę</button>
+   </div>
+  `;
+  list.appendChild(card);
+ });
+}
+
+function renderBank(){
+ document.getElementById("debt").textContent=formatMoney(state.loan);
+ document.getElementById("payments").textContent=state.loanPayments;
+
+ const box=document.getElementById("loanAction");
+ if(state.loan===0){
+  box.innerHTML=`
+   <button onclick="takeLoan(10000,12)">Kredyt 10 000 zł (12 ms)</button>
+   <button class="secondary" onclick="takeLoan(30000,24)">Kredyt 30 000 zł (24 ms)</button>
+   <button class="secondary" onclick="takeLoan(80000,36)">Kredyt 80 000 zł (36 ms)</button>
+  `;
+ }else{
+  box.innerHTML=`<button class="danger" onclick="payoffLoan()" ${state.cash<state.loan?"disabled":""}>Spłać całość (${formatMoney(state.loan)})</button>`;
+ }
+}
+
+function renderStaff(){
+ document.getElementById("staffCount").textContent=state.staff;
+ document.getElementById("staffCost").textContent=formatMoney(state.staff*1500);
+
+ const mktBox=document.getElementById("marketingAction2");
+ mktBox.innerHTML=`
+  <div class="row"><span>Poziom marketingu ogólnego:</span><b>${state.marketing}</b></div>
+  <button onclick="buyMarketing()" ${state.cash<2000?"disabled":""}>Zwiększ marketing (2 000 zł)</button>
+ `;
+}
+
+function renderMarket(){
+ const val=Math.round(state.competition*100);
+ document.getElementById("rival2").textContent=`${val}%`;
+ document.getElementById("rivalBar").style.width=`${val}%`;
+ document.getElementById("compLoss").textContent=formatMoney(totals().compLoss);
+}
+
+function renderAchievements(){
+ const list=document.getElementById("achievementList");
+ list.innerHTML="";
+
+ achievementsData.forEach(a=>{
+  const unlocked=state.achievements.includes(a.id);
+  const card=document.createElement("div");
+  card.className="card achievement";
+  card.innerHTML=`
+   <div class="emoji">${unlocked?"🏆":"🔒"}</div>
+   <div>
+    <h3>${a.title} ${unlocked?'<span class="pill">Odblokowane</span>':""}</h3>
+    <p class="muted">${a.desc}</p>
+   </div>
+  `;
+  list.appendChild(card);
+ });
+}
+
+function buyBiz(id){
+ const b=getBaseBiz(id);
+ if(state.cash>=b.price){
+  state.cash-=b.price;
+  state.businesses[id]=(state.businesses[id]||0)+1;
+  initBusinessSettings(id);
+  render();
+ }
+}
+
+function upgradeBiz(id){
+ const b=getBaseBiz(id);
+ const count=state.businesses[id]||0;
+ const cost=b.upgrade*(count+1);
+ if(count>0&&state.cash>=cost){
+  state.cash-=cost;
+  state.businesses[id]+=1;
+  render();
+ }
+}
+
+function buyProperty(id){
+ const p=propertiesData.find(x=>x.id===id);
+ if(p&&state.cash>=p.price){
+  state.cash-=p.price;
+  state.properties[id]=(state.properties[id]||0)+1;
+  render();
+ }
+}
+
+function buyVehicle(id){
+ const v=vehiclesData.find(x=>x.id===id);
+ if(v&&!state.vehicles.includes(id)&&state.cash>=v.price){
+  state.cash-=v.price;
+  state.vehicles.push(id);
+  render();
+ }
+}
+
+function buyMarketing(){
+ if(state.cash>=2000){
+  state.cash-=2000;
+  state.marketing+=1;
+  render();
+ }
+}
+
+function takeLoan(amount,months){
+ if(state.loan===0){
+  state.cash+=amount;
+  state.loan=Math.round(amount*1.15);
+  state.loanPayments=months;
+  render();
+ }
+}
+
+function payoffLoan(){
+ if(state.cash>=state.loan){
+  state.cash-=state.loan;
+  state.loan=0;
+  state.loanPayments=0;
+  render();
+ }
+}
+
+function processMonthlyEvents(){
+ const roll=Math.random();
+ let title="Spokojny miesiąc";
+ let desc="Brak nagłych zdarzeń na rynku. Stabilne warunki handlowe.";
+
+ if(roll<0.20){
+  const gain=1500+Math.floor(Math.random()*2500);
+  state.cash+=gain;
+  title="📈 Boom gospodarczy";
+  desc=`Lokalny rynek odnotował wzrost popytu. Zyskujesz niespodziewanie +${formatMoney(gain)}.`;
+ }else if(roll<0.35){
+  const loss=1000+Math.floor(Math.random()*2000);
+  state.cash-=loss;
+  title="📉 Awarie i koszty napraw";
+  desc=`Niespodziewana naprawa sprzętu pochłonęła -${formatMoney(loss)}.`;
+ }else if(roll<0.48){
+  state.competition=Math.min(0.5,state.competition+0.04);
+  title="⚔️ Nowy konkurent";
+  desc="W mieście pojawiła się nowa firma. Presja rynkowa wzrosła.";
+ }else if(roll<0.58){
+  state.competition=Math.max(0.05,state.competition-0.03);
+  title="🤝 Osłabienie konkurencji";
+  desc="Jeden z Twoich rywali ograniczył działalność. Presja rynkowa spadła.";
+ }
+
+ return {title,desc};
+}
+
+function showDaySummary(t,evt,startCash,netProfit){
+ document.getElementById("summarySubtitle").textContent=`Miesiąc ${state.day} • Podsumowanie finansowe`;
+ document.getElementById("sumRevenue").textContent=formatMoney(t.gross);
+ document.getElementById("sumCosts").textContent=formatMoney(t.gross - t.net);
+ document.getElementById("sumProfit").textContent=formatMoney(t.net);
+ document.getElementById("sumBalance").textContent=formatMoney(state.cash);
+
+ const rows=[
+  {label:"Przychód z firm i wynajmu",val:`+${formatMoney(t.gross)}`},
+  {label:"Koszt towaru i materiałów",val:`-${formatMoney(t.goodsCost)}`},
+  {label:"Płace i operacyjne firm",val:`-${formatMoney(t.bizCosts)}`},
+  {label:"Wynagrodzenia zespołu",val:`-${formatMoney(t.staffCost)}`},
+  {label:"Reklama i promocja",val:`-${formatMoney(t.adsTotal)}`},
+  {label:"Utrata przez konkurencję",val:`-${formatMoney(t.compLoss)}`},
+  {label:"Rata kredytu",val:`-${formatMoney(t.loanRata)}`},
+  {label:"Podatek dochodowy (15%)",val:`-${formatMoney(t.tax)}`}
+ ];
+
+ document.getElementById("summaryRows").innerHTML=rows.map(r=>`<div class="summary-row"><span>${r.label}</span><b>${r.val}</b></div>`).join("");
+
+ const ownedBiz=businesses.filter(b=>(state.businesses[b.id]||0)>0);
+ if(ownedBiz.length===0){
+  document.getElementById("summaryFirms").innerHTML='<p class="muted">Nie posiadasz jeszcze aktywnych przedsiębiorstw.</p>';
+ }else{
+  document.getElementById("summaryFirms").innerHTML=ownedBiz.map(b=>{
+   const fin=calcBusinessFinance(b.id);
+   return `<div class="summary-row"><span>${b.emoji} ${b.name} (${state.businesses[b.id]} szt.)</span><b>${formatMoney(fin.profit)} / ms</b></div>`;
+  }).join("");
+ }
+
+ document.getElementById("summaryEvent").innerHTML=`<b>${evt.title}</b><br>${evt.desc}`;
+ document.getElementById("daySummary").classList.add("show");
+}
+
+function closeDaySummary(){
+ document.getElementById("daySummary").classList.remove("show");
+}
+
+function endDay(){
+ const startCash=state.cash;
+ const t=totals();
+ state.cash+=t.net;
+
+ if(state.loanPayments>0){
+  state.loanPayments-=1;
+  state.loan-=t.loanRata;
+  if(state.loan<=0||state.loanPayments===0){
+   state.loan=0;
+   state.loanPayments=0;
+  }
+ }
+
+ const eventResult=processMonthlyEvents();
+ state.gigDone=false;
+ state.day+=1;
+ if(state.day % 12 === 1 && state.day > 1){
+  state.age+=1;
+ }
+
+ document.getElementById("news").textContent=`${eventResult.title}: ${eventResult.desc}`;
+ render();
+ showDaySummary(t,eventResult,startCash,t.net);
+}
+
+function saveGame(){
+ localStorage.setItem("biz_save",JSON.stringify(state));
+}
+
+function loadGame(){
+ const s=localStorage.getItem("biz_save");
+ if(s){
+  try{
+   state=Object.assign(state,JSON.parse(s));
+  }catch(e){}
+ }
+}
+
+function exportSaveCode(){
+ const data=btoa(encodeURIComponent(JSON.stringify(state)));
+ const area=document.getElementById("saveText");
+ area.value=data;
+ document.getElementById("saveStatus").textContent="Kod zapisu został wygenerowany w polu powyżej.";
+}
+
+function copySaveCode(){
+ const area=document.getElementById("saveText");
+ if(!area.value) exportSaveCode();
+ area.select();
+ navigator.clipboard.writeText(area.value).then(()=>{
+  document.getElementById("saveStatus").textContent="Kod zapisu skopiowany do schowka!";
+ }).catch(()=>{
+  document.getElementById("saveStatus").textContent="Nie udało się skopiować automatycznie. Skopiuj tekst ręcznie.";
+ });
+}
+
+function importSaveCode(){
+ const area=document.getElementById("saveText");
+ if(!area.value.trim()){
+  document.getElementById("saveStatus").textContent="Wklej kod zapisu do pola tekstowego.";
+  return;
+ }
+ try{
+  const json=decodeURIComponent(atob(area.value.trim()));
+  const parsed=JSON.parse(json);
+  if(parsed&&typeof parsed==="object"){
+   state=Object.assign(state,parsed);
+   saveGame();
+   render();
+   document.getElementById("saveStatus").textContent="Gra została pomyślnie wczytana!";
+  }else{
+   document.getElementById("saveStatus").textContent="Nieprawidłowy kod zapisu.";
+  }
+ }catch(e){
+  document.getElementById("saveStatus").textContent="Błąd podczas odczytu kodu zapisu.";
+ }
+}
+
+function newGame(){
+ if(confirm("Czy na pewno chcesz rozpocząć nową grę? Cały postęp zostanie zresetowany.")){
+  localStorage.removeItem("biz_save");
+  state={
+   day:1,
+   age:18,
+   cash:10000,
+   businesses:{},
+   bizSettings:{},
+   properties:{},
+   vehicles:[],
+   gigDone:false,
+   gigEarnings:0,
+   casinoNet:0,
+   staff:0,
+   marketing:0,
+   loan:0,
+   loanPayments:0,
+   competition:0.2,
+   strategyBonus:{price:.05,cost:.05,quality:.05},
+   achievements:[],
+   eventHistory:[]
+  };
+  showTab("home");
+  render();
+ }
+}
+
+document.querySelectorAll(".nav button").forEach(b=>{
+ b.addEventListener("click",()=>showTab(b.dataset.tab));
+});
+
+document.getElementById("endDay").addEventListener("click",endDay);
+document.getElementById("closeSummary").addEventListener("click",closeDaySummary);
+document.getElementById("summaryContinue").addEventListener("click",closeDaySummary);
+
+document.getElementById("hire").addEventListener("click",()=>{
+ if(state.cash>=1500){
+  state.cash-=1500;
+  state.staff+=1;
+  render();
+ }
+});
+
+document.getElementById("imageCampaign").addEventListener("click",()=>{
+ if(state.cash>=2000){
+  state.cash-=2000;
+  state.competition=Math.max(0.05,state.competition-0.05);
+  render();
+ }
+});
+
+document.getElementById("manageBusiness").addEventListener("change",renderManagePanel);
+
+document.getElementById("trainingAction").addEventListener("click",()=>{
+ if(state.cash>=1200){
+  state.cash-=1200;
+  state.strategyBonus.quality=(state.strategyBonus.quality||0)+0.03;
+  alert("Przeszkolono personel! Jakość usług i produktów wzrosła.");
+  render();
+ }
+});
+
+document.getElementById("supplierAction").addEventListener("click",()=>{
+ if(state.cash>=900){
+  state.cash-=900;
+  state.strategyBonus.cost=(state.strategyBonus.cost||0)+0.02;
+  alert("Wynegocjowano lepsze warunki handlowe z dostawcami! Koszty obniżone.");
+  render();
+ }
+});
+
+document.getElementById("researchAction").addEventListener("click",()=>{
+ if(state.cash>=700){
+  state.cash-=700;
+  state.strategyBonus.price=(state.strategyBonus.price||0)+0.02;
+  alert("Przeprowadzono badania rynku! Popyt i elastyczność cenowa poprawione.");
+  render();
+ }
+});
+
+document.getElementById("exportSave").addEventListener("click",exportSaveCode);
+document.getElementById("copySave").addEventListener("click",copySaveCode);
+document.getElementById("importSave").addEventListener("click",importSaveCode);
+document.getElementById("manualSave").addEventListener("click",()=>{
+ saveGame();
+ alert("Gra została zapisana!");
+});
+
+setInterval(saveGame,10000);
+
+loadGame();
+render();
+</script>
+</body>
+</html>
